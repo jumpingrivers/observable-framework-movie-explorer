@@ -122,3 +122,65 @@ const castText = view(
   })
 );
 ```
+
+
+```js
+const data = movies.filter(function(d) {
+  return (
+       d.Reviews >= reviewsMin
+    && d.Oscars >= oscarsMin    
+    && d.YearReleased >= yearMin && d.YearReleased <= yearMax
+    && (selectedGenre === 'All' || d.Genres.includes(selectedGenre))
+    && d.Director.includes(directorText.toLowerCase())
+    && d.Cast.includes(castText.toLowerCase())
+    && d.BoxOffice >= dollarsMin && d.BoxOffice <= dollarsMax
+  );
+});
+
+const xLabel = xVariable.name;
+const yLabel = yVariable.name;
+```
+
+
+```js
+Plot.plot({
+  width: 500,
+  height: 500,
+  color: {
+    type: 'categorical',
+    range: [getGrey(1), 'orange'],
+    domain: [getWonOscarText(false), getWonOscarText(true)], // Required for when filtering on oscar wins 
+    legend: true,
+  },
+  grid: true,
+  marks: [
+    Plot.axisX({ labelAnchor: 'center', labelArrow: 'none', label: xLabel }),
+    Plot.axisY({ labelAnchor: 'center', labelArrow: 'none', label: yLabel }),
+    Plot.dot(
+      data,
+      {
+        x: xVariable.prop,
+        y: yVariable.prop,
+        stroke: d => getWonOscarText(d.OscarWinner),
+        fill: getGrey(0.4),
+        r: 4,
+        channels: {
+          filmTitle: { value: 'Title', label: '' },
+          year: { value: 'YearReleased', label: '' },
+          revenue: { value: 'BoxOffice', label: '' },
+        },
+        tip: {
+          format: {
+            filmTitle: true,
+            year: d => `Year of release: ${d}`,
+            revenue: d => `Revenue: $${d.toFixed(d < 10 ? 1: 0)} million`,
+            x: false, y: false, stroke: false
+          }
+        }
+      }
+    ),
+  ]
+})
+```
+
+Number of movies selected: ${ d3.format(',')(data.length) }
