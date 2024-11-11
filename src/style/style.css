@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
+
+body {
+  font-family: "Outfit", sans-serif;
+  position: relative;
+  color: #0c293d;
+  background-color: #fcfbfa;
+}
+
+main {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  column-gap: 3em;
+  grid-template-columns: 350px 500px;
+  grid-template-areas:
+    "title title"
+    "controls chart"
+    "controls count";
+}
+
+main > h1 {
+  font-weight: 600;
+  grid-area: title;
+  text-align: center;
+}
+
+main > div {
+  display: none;
+}
+
+main > div:has(form) {
+  display: unset;
+  grid-area: controls;
+  padding-top: 1em;
+}
+
+main > div:has(figure) {
+  display: flex;
+  justify-content: center;
+  grid-area: chart;
+}
+
+main > p {
+  grid-area: count;
+  text-align: center;
+}
+
+input[type="number"] {
+  text-align: right;
+}
+
+
+main form[class^="inputs"]:has(input[type="number"]) {
+  display: inline-flex;
+  flex-direction: column;
+  width: calc(50% - 1em);
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+
+main form[class^="inputs"]:has(input[type="number"]) label {
+  width: 100%;
+}
+
+main form[class^="inputs"]:has(select, input[type="range"], input[type="text"], input[type="radio"]) {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-bottom: 0.5em;
+}
+
+main form[class^="inputs"]:has(select, input[type="range"], input[type="text"], input[type="radio"]) > * {
+  width: 100%;
+}
+
+[aria-label="tip"] {
+  fill-opacity: 0.8;
+}
+
+[aria-label="tip"] text tspan:first-child {
+  font-weight: bold;
+}
+
+
+@media (max-width: 950px) {
+  main {
+    padding: 0 1em;
+    grid-template-columns: unset;
+    grid-template-areas:
+      "title"
+      "controls"
+      "chart"
+      "count";
+  }
+}
