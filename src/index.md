@@ -184,3 +184,5 @@ Plot.plot({
 ```
 
 Number of movies selected: ${ d3.format(',')(data.length) }
+
+This is a port of the [Movie explorer](https://shiny.posit.co/r/gallery/interactive-visualizations/movie-explorer/) demonstration app from [Shiny](https://shiny.posit.co/) to [Observable Framework](https://observablehq.com/framework/).

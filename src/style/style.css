@@ -17,7 +17,8 @@ main {
   grid-template-areas:
     "title title"
     "controls chart"
-    "controls count";
+    "controls count"
+    "credit credit";
 }
 
 main > h1 {
@@ -51,7 +52,6 @@ input[type="number"] {
   text-align: right;
 }
 
-
 main form[class^="inputs"]:has(input[type="number"]) {
   display: inline-flex;
   flex-direction: column;
@@ -83,6 +83,21 @@ main form[class^="inputs"]:has(select, input[type="range"], input[type="text"], 
   font-weight: bold;
 }
 
+main > :last-child {
+  grid-area: credit;
+  font-size: 0.8rem;
+  text-align: left;
+  margin-top: 2rem;
+}
+
+a {
+  color: currentColor;
+  text-decoration-style: dotted;
+}
+
+a:hover {
+  text-decoration-style: unset;
+}
 
 @media (max-width: 950px) {
   main {
@@ -92,6 +107,7 @@ main form[class^="inputs"]:has(select, input[type="range"], input[type="text"], 
       "title"
       "controls"
       "chart"
-      "count";
+      "count"
+      "credit";
   }
 }
