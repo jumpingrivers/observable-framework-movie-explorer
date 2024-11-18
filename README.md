@@ -1,12 +1,13 @@
 # Movie Explorer
 
-This is an app built with [Observable Framework](https://observablehq.com/framework). To start the local preview server, run:
+This is an app built with [Observable Framework](https://observablehq.com/framework). To get started:
 
-```
-npm run dev
-```
-
-Then visit <http://localhost:3000> to see a preview.
+- Clone this repo and `cd` into it
+- Install a modern version of node, if necessary
+- Install the requisite R packages: dplyr, RSQLite and dbplyr
+- Run `npm ci` in the terminal
+- Run `npm run dev` in the terminal
+- Visit <http://localhost:3000> to see a live preview.
 
 
 ## Command reference
