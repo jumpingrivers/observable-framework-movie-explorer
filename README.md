@@ -1,3 +1,6 @@
+⚠️ Archived: This project is no longer maintained. It is preserved here for reference only. No issues or pull requests will be reviewed.
+
+
 # Movie Explorer
 
 This is an app built with [Observable Framework](https://observablehq.com/framework). To get started:
